@@ -1,10 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { createRoot } from "react-dom/client";
+import { ThemeProvider } from "@emotion/react";
+import App from "./App.jsx";
+import theme from "./theme.js";
+import "./index.css"; // import tailwaind css..
+import "./fonts/fonts.js"; // import fonts..........
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+createRoot(document.getElementById("root")).render(
+  <ThemeProvider theme={theme}>
     <App />
-  </StrictMode>,
-)
+  </ThemeProvider>
+);
