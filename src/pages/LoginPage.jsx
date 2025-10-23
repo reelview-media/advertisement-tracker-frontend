@@ -12,11 +12,12 @@ import {
 } from "@mui/material";
 import Logo from "../components/Logo";
 import { center } from "../styles/flexStyles";
-import { Link } from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
 import loginImg from "../assets/login.png";
+import GoogleButton from "../components/GoogleButton";
 
 const LoginPage = () => {
+
   return (
     <Stack sx={{ height: "auto" }}>
       <Grid container>
@@ -39,7 +40,7 @@ const LoginPage = () => {
                   settings securely.
                 </Typography>
               </Box>
-              {/* <GoogleButton /> */}
+              <GoogleButton />
               <Box sx={{ ...center, my: 4 }}>
                 <Divider sx={{ borderColor: "#999999", width: "30%" }} />
                 <Typography variant="body2" sx={{ color: "text.light", mx: 1 }}>
@@ -66,12 +67,12 @@ const LoginPage = () => {
                 Login
               </Button>
             </CardActions>
-            <Typography sx={{}} variant="body2">
+            {/* <Typography sx={{}} variant="body2">
               Not Registered yet?{" "}
               <Typography variant="body2" component={Link} to="/register">
                 Create an Account
               </Typography>
-            </Typography>
+            </Typography> */}
           </Card>
         </Grid>
         <Grid

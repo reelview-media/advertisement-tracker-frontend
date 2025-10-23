@@ -1,16 +1,20 @@
 import { Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
-import React from "react";
-import { signInWithGoogle } from "../config/firebaseConfig";
+import { API_BASE_URL } from "../utils/apiBaseUrl";
 
 const GoogleButton = () => {
+  console.log("api",API_BASE_URL);
+
+  const handleGoogleLogin = () => {
+    window.location.href = `${API_BASE_URL}/api/v1/auth/google`;
+  };
   return (
     <Button
       fullWidth
-      startIcon={<GoogleIcon fontSize="large" sx={{ color: "#000"}} />}
+      startIcon={<GoogleIcon fontSize="large" sx={{ color: "#000" }} />}
       variant="outlined"
       size="large"
-       sx={{
+      sx={{
         textTransform: "none",
         fontWeight: 500,
         bgcolor: "#fff",
@@ -21,7 +25,7 @@ const GoogleButton = () => {
           borderColor: "#dadce0",
         },
       }}
-      onClick={()=>signInWithGoogle()}
+     onClick={handleGoogleLogin}
     >
       Sign in with Google
     </Button>

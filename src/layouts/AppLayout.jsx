@@ -5,10 +5,11 @@ import Header from "../components/Header";
 
 const AppLayout = () => {
   const location = useLocation();
-  const logInPage = location.pathname === "/login";
+  const authPage =
+    location.pathname === "/login" || location.pathname === "/register";
   return (
     <React.Fragment>
-      {logInPage ? (
+      {authPage ? (
         <Outlet />
       ) : (
         <>

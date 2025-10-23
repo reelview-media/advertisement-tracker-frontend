@@ -1,40 +1,39 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2b2b81', 
-      light: '#00e6e6', 
-      contrastText: '#FFFFFF',
+      main: "#2b2b81",
+      light: "#00e6e6",
+      contrastText: "#FFFFFF",
     },
     secondary: {
-      main: '#fff', 
-      light:'#f7efe5',
-      contrastText: '#000000',
+      main: "#fff",
+      light: "#f7efe5",
+      contrastText: "#000000",
     },
-    other:{
-      main:'#00cc00',
+    other: {
+      main: "#00cc00",
     },
     background: {
-      default: '#fff', 
-      paper: '#2b2b81',
+      default: "#fff",
+      paper: "#2b2b81",
     },
-    text:{
-      main:'#000',
-      light:'#404040',
-      highlight:'#00e6e6'
-
+    text: {
+      main: "#000",
+      light: "#404040",
+      highlight: "#00e6e6",
     },
     hover: {
-      main: '#f3b229', 
+      main: "#f3b229",
     },
     active: {
-      main: '#0000FF', 
+      main: "#0000FF",
     },
   },
   typography: {
     fontFamily: "'Inter', sans-serif",
-    h1: { fontFamily: "'Poppins', sans-serif",},
+    h1: { fontFamily: "'Poppins', sans-serif" },
     h2: { fontFamily: "'Poppins', sans-serif" },
     h3: { fontFamily: "'Poppins', sans-serif" },
     h4: { fontFamily: "'Poppins', sans-serif" },
@@ -63,13 +62,17 @@ const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          '& .MuiOutlinedInput-root': {
-            borderRadius: '8px',
-            '&:hover fieldset': {
-              borderColor: '#c3863c', // hover red
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "5px",
+            "&:hover fieldset": {
+              borderColor: "#2b2b81", // hover red
             },
-            '&.Mui-focused fieldset': {
-              borderColor: '#7743DB', // primary focus
+            "&.Mui-focused fieldset": {
+              borderColor: "#2b2b81", // primary focus
+            },
+            "& input::placeholder": {
+              color: "#2b2b81",
+              fontSize: "0.9rem",
             },
           },
         },
@@ -79,7 +82,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           // borderRadius: '12px',
-          backgroundColor: '#FFFBF5', // first color
+          backgroundColor: "#FFFBF5", // first color
         },
       },
     },

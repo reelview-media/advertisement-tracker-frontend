@@ -14,4 +14,9 @@ export const menuLinks = [
     name: "Contact",
     path: "/contact",
   },
+  {
+    id: 4,
+    name: "Login",
+    path: "/login",
+  },
 ];

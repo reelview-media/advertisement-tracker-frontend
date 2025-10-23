@@ -5,6 +5,7 @@ import PageNotFound from "./pages/PageNotFound";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -28,6 +29,11 @@ const App = () => {
           path: "/login",
           element: <LoginPage />,
         },
+         {
+          path: "/dashboard",
+          element: <DashboardPage />,
+        },
+        
       ],
     },
     {
