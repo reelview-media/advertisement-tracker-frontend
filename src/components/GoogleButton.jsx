@@ -1,32 +1,49 @@
-import { Button } from "@mui/material";
-import GoogleIcon from "@mui/icons-material/Google";
+import { Box, Button } from "@mui/material";
 import { API_BASE_URL } from "../utils/apiBaseUrl";
 
 const GoogleButton = () => {
-  console.log("api",API_BASE_URL);
+  console.log("api", API_BASE_URL);
 
   const handleGoogleLogin = () => {
-    window.location.href = `${API_BASE_URL}/api/v1/auth/google`;
+    window.location.href = `${API_BASE_URL}/auth/google`;
   };
   return (
     <Button
       fullWidth
-      startIcon={<GoogleIcon fontSize="large" sx={{ color: "#000" }} />}
       variant="outlined"
       size="large"
+      onClick={handleGoogleLogin}
       sx={{
+        mt: 3,
+        borderRadius: 9,
         textTransform: "none",
         fontWeight: 500,
-        bgcolor: "#fff",
-        color: "#000",
+        color: "#3c4043",
+        backgroundColor: "#fff",
         borderColor: "#dadce0",
+        boxShadow:
+          "0 1px 3px rgba(60, 64, 67, 0.3), 0 1px 1px rgba(60, 64, 67, 0.15)",
         "&:hover": {
-          bgcolor: "#f7f8f8",
+          backgroundColor: "#f8f9fa",
+          boxShadow:
+            "0 1px 3px rgba(60, 64, 67, 0.3), 0 1px 1px rgba(60, 64, 67, 0.15)",
           borderColor: "#dadce0",
         },
+        "&:active": {
+          backgroundColor: "#f1f3f4",
+        },
       }}
-     onClick={handleGoogleLogin}
     >
+      <Box
+        component="img"
+        src="https://developers.google.com/identity/images/g-logo.png"
+        alt="Google Logo"
+        sx={{
+          width: 20,
+          height: 20,
+          mr: 1,
+        }}
+      />
       Sign in with Google
     </Button>
   );

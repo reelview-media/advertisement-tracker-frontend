@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import PageNotFound from "./pages/PageNotFound";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
-import LoginPage from "./pages/LoginPage";
+import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
 
 const App = () => {
@@ -27,7 +27,11 @@ const App = () => {
         },
         {
           path: "/login",
-          element: <LoginPage />,
+          element: <AuthPage />,
+        },
+        {
+          path: "/register",
+          element: <AuthPage />,
         },
          {
           path: "/dashboard",

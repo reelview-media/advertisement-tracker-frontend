@@ -12,7 +12,7 @@ const LogoutBtn = ({ handleClose }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/v1/auth/logout`, {
+      const response = await axios.get(`${API_BASE_URL}/auth/logout`, {
         withCredentials: true,
       });
       console.log("logut", response);

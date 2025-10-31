@@ -14,7 +14,7 @@ const DashboardPage = () => {
     const checkAuthUser = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/v2/dashboard`, {
+        const response = await axios.get(`${API_BASE_URL}/dashboard`, {
           withCredentials: true,
         });
         if (response.status === 200) {
@@ -29,7 +29,7 @@ const DashboardPage = () => {
         navigate("/login");
       } finally {
         setIsLoading(false);
-      }
+      } 
     };
 
     checkAuthUser();

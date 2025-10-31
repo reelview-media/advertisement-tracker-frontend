@@ -10,7 +10,14 @@ import { store } from "./redux_store/store.js";
 
 createRoot(document.getElementById("root")).render(
   <ThemeProvider theme={theme}>
-    <SnackbarProvider>
+    <SnackbarProvider
+      maxSnack={2}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      autoHideDuration={3000}
+    >
       <Provider store={store}>
         <App />
       </Provider>
