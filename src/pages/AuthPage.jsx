@@ -45,7 +45,7 @@ const AuthPage = () => {
     rightHeading,
     rightSubtext,
   } = currentAuthPageData;
-
+console.log("Form Data",formData);
   return (
     <Stack sx={{ height: "100vh", overflow: "hidden" }}>
       <Grid container>

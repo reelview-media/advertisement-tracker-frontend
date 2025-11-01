@@ -67,13 +67,21 @@ export const handleRegisterValidator = ({
   return true;
 };
 
-export const handleLoginSubmit = (e, formData) => {
+export const handleLoginSubmit = async(e, formData,navigate) => {
   e.preventDefault();
   const isValid = handleLoginValidator(formData);
   if (!isValid) return;
-
-  // proceed to API call
-  console.log("✅ Login form is valid", formData);
+  try {
+    const response = await axios.post(`${API_BASE_URL}/auth/login`,formData,{withCredentials:true});
+    console.log("response",response);
+    if(response.status === 200){
+      navigate('/dashboard');
+      enqueueSnackbar(response.data.message,{variant:'success'});
+    }
+  } catch (error) {
+    console.log(error)
+    enqueueSnackbar(error.response.data.message,{variant:'error'});
+  }
 };
 
 export const handleRegisterSubmit = async (e, formData,navigate) => {
@@ -84,13 +92,14 @@ export const handleRegisterSubmit = async (e, formData,navigate) => {
 
   try {
     const response = await axios.post(
-      `${API_BASE_URL}/api/v1/auth/register`,
+      `${API_BASE_URL}/auth/register`,
       formData,
       { withCredentials: true }
     );
     if (response.status === 201 && response.data.success) {
       enqueueSnackbar(response.data.message, { variant: "success" });
       navigate("/dashboard");
+
     }
   } catch (error) {
     console.log(error);
