@@ -13,16 +13,11 @@ import CallTwoToneIcon from "@mui/icons-material/CallTwoTone";
 import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 import Sidebar from "./Sidebar";
 import CloseIcon from "@mui/icons-material/Close";
-import { useSelector } from "react-redux";
-import ProfileDropdown from "./ProfileDropdown";
 
 const Header = () => {
   const isTablet = useMediaQuery("(max-width:700px)");
   const [scrolled, setScrolled] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
-  //* If user login ....
-  const isAuthoriz = useSelector((state) => state.auth.isAuthorized);
-  console.log("Header", isAuthoriz);
 
   // Detect scroll...........
   useEffect(() => {
@@ -91,38 +86,32 @@ const Header = () => {
             </IconButton>
           ) : (
             <>
-              {isAuthoriz ? (
-                <ProfileDropdown />
-              ) : (
-                <>
-                  <MenuLinks scrolled={scrolled} />
-                  <Button
-                    variant={scrolled ? "contained" : "outlined"}
-                    sx={{
-                      textTransform: "capitalize",
-                      fontWeight: 800,
-                      ml: 5,
-                      border: !scrolled && "2px solid #fff",
-                      color: "#fff",
-                      transition: "transform 0.9s ease-in-out",
-                      "&:hover": scrolled
-                        ? {
-                            bgcolor: "transparent",
-                            border: "2px solid #2b2b81",
-                            color: "primary.main",
-                          }
-                        : {
-                            transform: "scale(1.1)",
-                            bgcolor: "#fff",
-                            color: "primary.main",
-                          },
-                    }}
-                    startIcon={<CallTwoToneIcon />}
-                  >
-                    Get in Touch
-                  </Button>
-                </>
-              )}
+              <MenuLinks scrolled={scrolled} />
+              <Button
+                variant={scrolled ? "contained" : "outlined"}
+                sx={{
+                  textTransform: "capitalize",
+                  fontWeight: 800,
+                  ml: 5,
+                  border: !scrolled && "2px solid #fff",
+                  color: "#fff",
+                  transition: "transform 0.9s ease-in-out",
+                  "&:hover": scrolled
+                    ? {
+                        bgcolor: "transparent",
+                        border: "2px solid #2b2b81",
+                        color: "primary.main",
+                      }
+                    : {
+                        transform: "scale(1.1)",
+                        bgcolor: "#fff",
+                        color: "primary.main",
+                      },
+                }}
+                startIcon={<CallTwoToneIcon />}
+              >
+                Get in Touch
+              </Button>
             </>
           )}
         </Box>

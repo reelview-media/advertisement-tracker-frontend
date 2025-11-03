@@ -1,6 +1,7 @@
 import { enqueueSnackbar } from "notistack";
 import { API_BASE_URL } from "../utils/apiBaseUrl";
 import axios from "axios";
+import { setAuthData } from "../redux_store/slices/auth.slice";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -67,24 +68,27 @@ export const handleRegisterValidator = ({
   return true;
 };
 
-export const handleLoginSubmit = async(e, formData,navigate) => {
+export const handleLoginSubmit = async (e, formData, navigate, dispatch) => {
   e.preventDefault();
   const isValid = handleLoginValidator(formData);
   if (!isValid) return;
   try {
-    const response = await axios.post(`${API_BASE_URL}/auth/login`,formData,{withCredentials:true});
-    console.log("response",response);
-    if(response.status === 200){
-      navigate('/dashboard');
-      enqueueSnackbar(response.data.message,{variant:'success'});
+    const response = await axios.post(`${API_BASE_URL}/auth/login`, formData, {
+      withCredentials: true,
+    });
+
+    if (response.status === 200) {
+      dispatch(setAuthData(response.data.user));
+      enqueueSnackbar(response.data.message, { variant: "success" });
+      navigate("/dashboard");
     }
   } catch (error) {
-    console.log(error)
-    enqueueSnackbar(error.response.data.message,{variant:'error'});
+    console.log(error);
+    enqueueSnackbar(error.response?.data?.message, { variant: "error" });
   }
 };
 
-export const handleRegisterSubmit = async (e, formData,navigate) => {
+export const handleRegisterSubmit = async (e, formData, navigate, dispatch) => {
   e.preventDefault();
 
   const isValid = handleRegisterValidator(formData);
@@ -97,12 +101,14 @@ export const handleRegisterSubmit = async (e, formData,navigate) => {
       { withCredentials: true }
     );
     if (response.status === 201 && response.data.success) {
+      dispatch(setAuthData(response.data.data));
       enqueueSnackbar(response.data.message, { variant: "success" });
       navigate("/dashboard");
-
     }
   } catch (error) {
     console.log(error);
-    enqueueSnackbar(error.response.data.message, { variant: "error" });
+    enqueueSnackbar(error.response?.data?.message || "Registration failed", {
+      variant: "error",
+    });
   }
 };

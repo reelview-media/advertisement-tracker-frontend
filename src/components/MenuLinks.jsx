@@ -15,29 +15,17 @@ const MenuLinks = ({ scrolled, useIn, closeSidebar }) => {
             component={Link}
             to={item.path}
             key={item.id}
-            variant="body1"
+            variant="body2"
             sx={{
-              mx: 1,
-              color:
-                scrolled && isActive
-                  ? "primary.main"
-                  : footer && isActive
-                  ? "primary.main"
-                  : isActive
-                  ? "#fff"
-                  : scrolled
-                  ? "#000"
-                  : footer
-                  ? "#000"
-                  : "#ccc",
-              fontWeight: isActive ? 700 : 600,
-              fontSize: isActive ? "0.9rem" : "",
+              mx: 3,
+              color:isActive?"red":scrolled?"#000": "white",
+              fontWeight: isActive ? 800 : 500,
               letterSpacing: 1,
               textAlign:'start',
               marginBottom:sidebar  || footer ? 2 : 0,
               "&:hover": {
-                color: scrolled && isActive ? "#2b2b81" : "#000",
-                borderBottom: !isActive?"1px solid #2b2b81":"",
+                color: scrolled && isActive ? "#2b2b81" : "hover.main",
+                borderBottom: !isActive?"3px solid #f3b229":"",
               }
             }}
             onClick={() => {

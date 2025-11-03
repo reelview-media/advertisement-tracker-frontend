@@ -1,55 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { API_BASE_URL } from "../utils/apiBaseUrl";
-import { clearAuth, setAuthData } from "../redux_store/slices/auth.slice";
+
+import {  Grid, Stack } from "@mui/material";
+import DashboardCard from "../components/Cards/DashboardCard";
+import { cards } from "../data/dashboardData";
+import { useSelector } from "react-redux";
 
 const DashboardPage = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const checkAuthUser = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(`${API_BASE_URL}/dashboard`, {
-          withCredentials: true,
-        });
-        if (response.status === 200) {
-          dispatch(setAuthData(response.data.user));
-        } else {
-          dispatch(clearAuth());
-          navigate("/login");
-        }
-      } catch (error) {
-        console.error("Auth check failed:", error.message);
-        dispatch(clearAuth());
-        navigate("/login");
-      } finally {
-        setIsLoading(false);
-      } 
-    };
-
-    checkAuthUser();
-  }, [dispatch, navigate]);
 
   const userData = useSelector((state) => state.auth);
   console.log("userform store", userData);
 
- 
-
   return (
-    <>
-      {isLoading ? (
-        <div>loading.......</div>
-      ) : (
-        <div>
-          <h1>Dashboard {userData.userInfo?.email}</h1>
-        </div>
-      )}
-    </>
+    <Stack>
+      <Grid container rowSpacing={2} columnSpacing={2}>
+        {cards.map((item) => (
+          <Grid key={item.id} size={{ xs: 12, sm: 12, md: 3 }}>
+            <DashboardCard item={item} />
+          </Grid>
+        ))}
+      </Grid>
+    </Stack>
   );
 };
 

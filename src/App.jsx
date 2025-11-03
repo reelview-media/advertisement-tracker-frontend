@@ -6,12 +6,22 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
+import ProfilePage from "./pages/ProfilePage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useAuthCheck } from "./hooks/useAuthCheck";
+import { useSelector } from "react-redux";
+import DashboardLayout from "./layouts/DashboardLayout";
+import ServicePage from "./pages/ServicePage";
 
 const App = () => {
+  const loading = useAuthCheck();
+  console.log("Loading", loading);
+  const isAuth = useSelector((state)=>state.auth.isAuthorized)
+  console.log("ISAuth",isAuth)
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AppLayout />,
+      element: isAuth?<DashboardLayout/>:<AppLayout />,
       children: [
         {
           index: true,
@@ -20,6 +30,10 @@ const App = () => {
         {
           path: "/about",
           element: <AboutPage />,
+        },
+        {
+          path: "/service",
+          element: <ServicePage />,
         },
         {
           path: "/contact",
@@ -33,11 +47,22 @@ const App = () => {
           path: "/register",
           element: <AuthPage />,
         },
-         {
+        {
           path: "/dashboard",
-          element: <DashboardPage />,
+          element: (
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          ),
         },
-        
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          ),
+        },
       ],
     },
     {
@@ -45,6 +70,8 @@ const App = () => {
       element: <PageNotFound />,
     },
   ]);
+  if (loading) return <p>Checking session...</p>;
+
   return <RouterProvider router={router} />;
 };
 

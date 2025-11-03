@@ -48,7 +48,7 @@ export const authPageData = [
     buttonLabel: "Login",
     icon: <LoginIcon />,
     bottomText: (
-      <Typography variant="body2">
+      <Typography variant="body2" sx={{mt:4}}>
         Not registered yet?{" "}
         <Typography
           component={Link}
@@ -70,7 +70,7 @@ export const authPageData = [
     buttonLabel: "Register",
     icon: <PersonAddAltIcon />,
     bottomText: (
-      <Typography variant="body2">
+      <Typography variant="body2" sx={{mt:4}}>
         Already have an account?{" "}
         <Typography
           component={Link}

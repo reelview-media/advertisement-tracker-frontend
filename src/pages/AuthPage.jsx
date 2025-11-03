@@ -8,9 +8,10 @@ import {
   Grid,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Logo from "../components/Logo";
-import { center } from "../styles/flexStyles";
+import { center, flexStart } from "../styles/flexStyles";
 import authBg from "../assets/authbg.png";
 import GoogleButton from "../components/GoogleButton";
 import AuthForm from "../components/AuthForm";
@@ -18,10 +19,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { authPageData } from "../data/authData";
 import { useState } from "react";
 import { handleLoginSubmit, handleRegisterSubmit } from "../utils/authHandler";
+import { useDispatch } from "react-redux";
 
 const AuthPage = () => {
+  const laptop = useMediaQuery("(max-width:1136px)");
+  const isTablet = useMediaQuery("(max-width:900px)");
+  const isMobile = useMediaQuery("(max-width:600px)");
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -45,36 +51,50 @@ const AuthPage = () => {
     rightHeading,
     rightSubtext,
   } = currentAuthPageData;
-console.log("Form Data",formData);
   return (
-    <Stack sx={{ height: "100vh", overflow: "hidden" }}>
-      <Grid container>
-        <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ p: 3 }}>
+    <Stack sx={{ height:'auto' }}>
+      <Grid container sx={{height: "100vh"}}>
+        <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ p: isMobile ? 1 : 3,height:'100%'}}>
           <Logo useIn="login" />
           <Card
             component="form"
             onSubmit={(e) =>
               loginPage
-                ? handleLoginSubmit(e, formData, navigate)
-                : handleRegisterSubmit(e, formData, navigate)
+                ? handleLoginSubmit(e, formData, navigate, dispatch)
+                : handleRegisterSubmit(e, formData, navigate, dispatch)
             }
             sx={{
               bgcolor: "transparent",
               boxShadow: "none",
-              mt: 5,
-              px: loginPage ? 9 : 3,
-              py: 7,
+              px: loginPage? isMobile? 0  : isTablet? 5: laptop ? 2: 9:isMobile?0: isTablet?5:laptop? 1: 3,
+              py: 5,
             }}
           >
             <CardContent>
-              <Box>
-                <Typography gutterBottom variant="h4" sx={{ fontWeight: 800 }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  ...(isTablet ? center : flexStart),
+                  alignItems: isTablet ? "center" : "start",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography
+                  gutterBottom
+                  variant={isMobile?"h5":"h4"}
+                  sx={{
+                    fontWeight: 900,
+                  }}
+                >
                   {heading}
                 </Typography>
                 <Typography
                   gutterBottom
                   variant="title1"
-                  sx={{ color: "text.light" }}
+                  sx={{
+                    color: "text.light",
+                    textAlign: isTablet ? "center" : "start",
+                  }}
                 >
                   {description}
                 </Typography>
@@ -83,27 +103,28 @@ console.log("Form Data",formData);
 
               {loginPage && (
                 <Box sx={{ ...center, my: 3 }}>
-                  <Divider sx={{ borderColor: "#ccc", width: "30%" }} />
+                  <Divider sx={{ borderColor: "#ccc", width: isMobile?"10%":"30%" }} />
                   <Typography
                     component="p"
-                    variant="body2"
+                    variant={isMobile ? "caption" : "body2"}
                     sx={{ color: "text.light", mx: 1 }}
                   >
                     Sign in with email
                   </Typography>
-                  <Divider sx={{ borderColor: "#ccc", width: "30%" }} />
+                  <Divider sx={{ borderColor: "#ccc", width: isMobile?"10%":"30%" }} />
                 </Box>
               )}
-              <Box sx={{ mt: loginPage ? 1 : 4 }}>
+              <Box sx={{width:'100%', mt: loginPage ? 1 : isMobile?1:3.5 }}>
                 <AuthForm formData={formData} onChange={handleChange} />
               </Box>
             </CardContent>
-            <CardActions sx={{ ...center, mb: 2 }}>
+            <CardActions sx={{ ...center }}>
               <Button
                 endIcon={icon}
                 type="submit"
                 size="large"
                 variant="contained"
+                
               >
                 {buttonLabel}
               </Button>
@@ -114,7 +135,7 @@ console.log("Form Data",formData);
         <Grid
           size={{ xs: 12, sm: 12, md: 6 }}
           sx={{
-            height: "100vh",
+            height: "auto",
             bgcolor: "primary.main",
             p: 3,
             ...center,
@@ -123,6 +144,7 @@ console.log("Form Data",formData);
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
+            display: { xs: "none", sm: "none", md: "flex" },
           }}
         >
           <Typography
