@@ -1,41 +1,76 @@
-import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import React from "react";
+import AdsClickIcon from "@mui/icons-material/AdsClick";
+import { center } from "../../styles/flexStyles";
+import { motion } from "framer-motion";
+import { commanAnimate } from "../../animate/commanAnimate";
+
+const MotionCard = motion(Card);
 
 const VisionCard = ({ item }) => {
   return (
-    <Card
-      sx={{
-        width: "100%",
-        height:"100%",
-        cursor: "pointer",
-        bgcolor: `#fff`,
-        boxShadow: "0px 0px 5px #2b2b81",
-      }}
-    >
-      <Box
-        component="img"
+    <>
+      <AdsClickIcon
         sx={{
-          width: "100%",
-          height: 200,
-          transition: "all 0.5s ease-in-out",
-          
-          "&:hover": { transform: "scale(1.2)" },
+          color: "#cc0096",
+          fontSize: "4rem",
+          position: "absolute",
+          top: -30,
+          left: -30,
+          transform: "rotate(-10deg)",
         }}
-        src="https://plus.unsplash.com/premium_photo-1682309586073-902b5c4905b8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1212"
       />
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h6"
-          sx={{ fontWeight: 800, color: "primary.main", textAlign: "center" }}
-        >
-          {item.title}
-        </Typography>
-        <Typography variant="body1" sx={{ color: "text.light" }}>
-          {item.description}
-        </Typography>
-      </CardContent>
-    </Card>
+      <MotionCard
+        {...commanAnimate.card}
+        sx={(theme) => ({
+          width: "100%",
+          cursor: "pointer",
+          p: 3,
+          background: theme.palette.background.custom,
+        })}
+      >
+        <CardContent sx={{ ...center, flexDirection: "column" }}>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              color: "#fff",
+              textShadow: "3px 0px 3px #000",
+              textAlign: "center",
+            }}
+          >
+            {item.title}
+          </Typography>
+          <Divider
+            sx={{
+              borderColor: "#fff",
+              borderWidth: "2px",
+              width: "80%",
+              mb: 3,
+              borderRadius: 5,
+            }}
+          />
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#fff",
+              lineHeight: 1.5,
+              fontWeight: 500,
+              letterSpacing: 0.5,
+            }}
+          >
+            {item.description}
+          </Typography>
+        </CardContent>
+      </MotionCard>
+    </>
   );
 };
 

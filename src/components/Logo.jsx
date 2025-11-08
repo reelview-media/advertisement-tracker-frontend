@@ -1,31 +1,41 @@
-import { Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import LogoImg from "../assets/logo.png";
+import { motion } from "framer-motion";
+import { logoVariants } from "../animate/header";
 
-const Logo = ({ scrolled, useIn }) => {
-  const footer = useIn === "footer";
-  const loginPage = useIn === "login";
-  const dashboard = useIn === "dashboard";
+const MotionBox = motion(Box);
+
+const Logo = ({ scrolled }) => {
+  const minLaptop = useMediaQuery("(max-width:1050px)");
   return (
-    <Typography
+    <MotionBox
       component={Link}
-      to='/'
-      variant={loginPage ? "h4" : "h5"}
-      className=" uppercase"
+      to="/"
+      variants={logoVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover={{ scale: 1.05, rotate: 1 }}
+      transition={{ type: "spring", stiffness: 200 }}
       sx={{
-        color: scrolled
-          ? "primary.main"
-          : footer
-          ? "#000"
-          : loginPage
-          ? "primary.main"
-          : "#fff",
-        fontWeight: dashboard?500:800,
-        flexGrow:1
+        width:'auto',
       }}
     >
-      Reelview Media
-    </Typography>
+      <Box
+        component="img"
+        src={LogoImg}
+        alt="Reelview Media"
+        sx={{
+          width: minLaptop ? 200 : scrolled ? 200 : 250,
+          height: "auto",
+          objectFit: "contain",
+          objectPosition: "center",
+          p: 1,
+          cursor: "pointer",
+        }}
+      />
+    </MotionBox>
   );
 };
 

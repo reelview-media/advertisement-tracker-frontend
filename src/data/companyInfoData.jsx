@@ -7,13 +7,13 @@ import LanguageIcon from "@mui/icons-material/Language";
 export const companyInfo = [
   {
     id: 1,
-    icon: <PhoneIcon sx={{fontSize:'2.7rem',p:0.5,color:"#2b2b81"}}  />,
+    icon: <PhoneIcon sx={{fontSize:'2.7rem',p:0.5,color:"#ff00bb"}}  />,
     label: "Phone",
     value: "+91 98765 43210",
   },
   {
     id: 2,
-    icon: <EmailIcon sx={{fontSize:'2.7rem',p:0.5,color:"#2b2b81"}}  />,
+    icon: <EmailIcon sx={{fontSize:'2.7rem',p:0.5,color:"#5305c7"}}  />,
     label: "Email",
     value: "support@yourcompany.com",
   },

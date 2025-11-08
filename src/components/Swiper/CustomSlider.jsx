@@ -8,17 +8,21 @@ import ServiceCard from "../Cards/ServiceCard";
 import { servicesCategories } from "../../data/servicesCategoriesData";
 import ReviewCard from "../Cards/ReviewCard";
 import { reviews } from "../../data/reviewsData";
-import AboutServiceCard from "../Cards/AboutServiceCard";
+import { commanAnimate } from "../../animate/commanAnimate";
+import { motion } from "framer-motion";
+import { teamMembers } from "../../data/teamData";
+
+const MotionContainer = motion(Container);
 
 const CustomSlider = ({ useIn }) => {
   const minLaptop = useMediaQuery("(max-width:1082px)");
   const isTablet = useMediaQuery("(max-width:700px)");
   const isMobile = useMediaQuery("(max-width:599px)");
-  // const smallMobile = useMediaQuery("(max-width:405px)");
   const otherPhone = useMediaQuery("(max-width:463px)");
   const service = useIn === "service";
   const aboutService = useIn === "aboutService";
   const review = useIn === "review";
+  const teamSection = useIn === "teamSection";
   //BreakPoints..........
   const breakpoints =
     service || aboutService
@@ -36,9 +40,10 @@ const CustomSlider = ({ useIn }) => {
           1280: { slidesPerView: 3 },
         };
   return (
-    <Container
+    <MotionContainer
       maxWidth="xl"
-      sx={{ py: 5, display: "flex", flexWrap: "wrap",  }}
+      {...commanAnimate.slider}
+      sx={{ py: 5, display: "flex", flexWrap: "wrap" }}
     >
       <Swiper
         className="customSlider"
@@ -86,19 +91,22 @@ const CustomSlider = ({ useIn }) => {
         }}
         breakpoints={breakpoints}
       >
-        {(service || aboutService ? servicesCategories : reviews).map(
-          (item) => (
-            <SwiperSlide key={item.id}>
-              {service || aboutService ? (
-                <ServiceCard item={item} />
-              ) : (
-                <ReviewCard item={item} />
-              )}
-            </SwiperSlide>
-          )
-        )}
+        {(service || aboutService
+          ? servicesCategories
+          : teamSection
+          ? teamMembers
+          : reviews
+        ).map((item) => (
+          <SwiperSlide key={item.id}>
+            {service || aboutService ? (
+              <ServiceCard item={item} />
+            ) : (
+              <ReviewCard item={item} />
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </Container>
+    </MotionContainer>
   );
 };
 

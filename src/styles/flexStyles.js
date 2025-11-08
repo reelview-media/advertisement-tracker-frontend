@@ -1,5 +1,9 @@
 
-
+export const flexAllStart = {
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "start",
+};
 export const flexStart = {
   display: "flex",
   justifyContent: "start",

@@ -12,20 +12,22 @@ const ContactPage = () => {
   const isMobile = useMediaQuery("(max-width:500px)");
 
   return (
-    <Stack sx={{ pt: laptop?5:10 }}>
+    <Stack sx={{ pt: laptop?5:10 ,mt:10}}>
       <Container
         sx={{
           ...center,
+          bgcolor:'background.paper',
           flexDirection: "column",
           boxShadow: laptop?"":"0px 0px 5px #2b2b81",
           borderRadius: 5,
           p: isMobile?1:4,
+          py:10,
         }}
       >
         <Typography
           gutterBottom
-          variant="h5"
-          sx={{ fontWeight: 600, textAlign: "center" }}
+          variant="h4"
+          sx={{ fontWeight: 700, textAlign: "center" ,color:'secondary.main'}}
         >
           Get in Touch With Us
         </Typography>
@@ -48,21 +50,20 @@ const ContactPage = () => {
             {companyInfo.map((item) => (
               <React.Fragment key={item.id}>
                 <Card
-                  sx={{
+                  sx={(theme)=>({
                     cursor:'pointer',
                     boxShadow:'none',
-                    py:1,
+                    mb:2,
                     border:'none',
-                   bgcolor:'transparent',
                     ...flexStart,
-                  }}
+                    // background:theme.palette.background.custom
+                  })}
                 >
-                  <IconButton>{item.icon}</IconButton>
+                  <IconButton sx={{}}>{item.icon}</IconButton>
                   <Typography variant="body1" sx={{ fontWeight: 500,color:'text.main' }}>
                     {item.value}
                   </Typography>
                 </Card>
-                <Divider sx={{borderColor:'#2b2b81'}}/>
               </React.Fragment>
             ))}
           </Grid>

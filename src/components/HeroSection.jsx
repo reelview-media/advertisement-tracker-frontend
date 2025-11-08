@@ -7,18 +7,27 @@ import {
 } from "@mui/material";
 import { center } from "../styles/flexStyles";
 import HeroVideo from "./HeroVideo";
+import { motion } from "framer-motion";
+import { heroSectionAnimation } from "../animate/heroSectionAnimate";
+
+const MotionStack = motion(Stack);
+const MotionTypography = motion(Typography);
 
 const HeroSection = () => {
-  //TODO: Add for responsive.............
   const minLaptop = useMediaQuery("(max-width:950px)");
   const isTablet = useMediaQuery("(max-width:725px)");
   const ismobile = useMediaQuery("(max-width:520px)");
-  const smallmobile = useMediaQuery("(max-width:415px)");
 
   return (
-    <Stack
+    <MotionStack
       component="section"
+      variants={heroSectionAnimation.container}
+      initial="initial"
+      animate="animate"
+      viewport={{ once: true, amount: 0.3 }}
       sx={{
+        // border:'2px solid red',
+        mt:10,
         height: "auto",
         pb: 10,
         bgcolor: "primary.main",
@@ -26,49 +35,93 @@ const HeroSection = () => {
       }}
     >
       <Container sx={{ mt: 10, ...center, flexDirection: "column" }}>
-        <Typography
-        gutterBottom
+        <MotionTypography
+          variants={heroSectionAnimation.heading}
+          gutterBottom
           variant="h1"
           sx={{
-            fontSize: smallmobile?"2rem":ismobile?"3rem":isTablet?"4rem":minLaptop?"5.5rem":"6rem",
-            textAlign: ismobile?"start":"center",
+            fontSize: ismobile
+              ? "3.5rem"
+              : isTablet
+              ? "4rem"
+              : minLaptop
+              ? "5.5rem"
+              : "6rem",
+            textAlign: "center",
             fontWeight: 900,
             color: "secondary.main",
           }}
         >
-          Making Your Life{" "}
-          <Typography
+          Let’s Grow{" "}
+          <MotionTypography
+            variants={heroSectionAnimation.gradientText}
             variant="h1"
             component="span"
             sx={{
-              color: "text.highlight",
-              fontSize: smallmobile?"2rem":ismobile?"3rem":isTablet?"4rem":minLaptop?"5.5rem":"6rem",
+              background:
+                "linear-gradient(90deg, #FF6FD8 0%, #9D60FB 50%, #4C9EFF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontSize: ismobile
+                ? "3.5rem"
+                : isTablet
+                ? "4rem"
+                : minLaptop
+                ? "5.5rem"
+                : "6rem",
               fontWeight: 900,
               lineHeight: 1.4,
             }}
           >
-            Easier with Every Service.
-          </Typography>
-        </Typography>
-        <Typography
+            Your Business Digitally
+          </MotionTypography>
+        </MotionTypography>
+        <MotionTypography
+          variants={heroSectionAnimation.subtext}
           gutterBottom
           sx={{
-            width: isTablet?"100%":minLaptop?"90%":"75%",
+            width: isTablet ? "100%" : minLaptop ? "90%" : "75%",
             mt: 1,
-            textAlign: ismobile?"start":"center",
-            color: "secondary.light",
-            fontSize: ismobile?"1rem":"1.3rem",
-            fontWeight: 100,
+            textAlign: ismobile ? "start" : "center",
+            color: "primary.text",
+            fontSize: "1.3rem",
+            fontWeight: 900,
             letterSpacing: 0.5,
             wordSpacing: 0.7,
+            mb: 10,
           }}
         >
-          Connect with essential services like hotels, hospitals, and community
-          halls—all in one place. Making access simple, fast, and reliable.
-        </Typography>
+          Grow your business faster with smart{" "}
+          <Typography
+            component="span"
+            sx={{
+              color: "secondary.main",
+              fontSize: "1.3rem",
+              fontWeight: 900,
+              borderRadius: 5,
+              p: 0.5,
+            }}
+          >
+            marketing strategies
+          </Typography>
+          ,{" "}
+          <Typography
+            component="span"
+            sx={{
+              color: "secondary.main",
+              fontSize: "1.3rem",
+              fontWeight: 900,
+              borderRadius: 5,
+              p: 0.5,
+            }}
+          >
+            powerful digital campaigns
+          </Typography>
+          , and a team focused on real results.
+        </MotionTypography>
       </Container>
       <HeroVideo />
-    </Stack>
+    </MotionStack>
   );
 };
 

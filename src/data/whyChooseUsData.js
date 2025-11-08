@@ -1,32 +1,22 @@
-export const serviceFeatures = [
+export const whyChooseUs = [
   {
-    id: 1,
-    title: "Verified Listings",
-    description: "Every service provider on our platform is verified to ensure reliability and quality."
+    title: "Results-Driven Strategies",
+    description:
+      "We focus on implementing strategies that deliver measurable growth and impactful outcomes."
   },
   {
-    id: 2,
-    title: "Wide Range of Services",
-    description: "From emergency needs to planned events, we cover every aspect of daily life."
+    title: "Cross-Channel Expertise",
+    description:
+      "Our team integrates social media, web, and paid media channels for maximum brand impact."
   },
   {
-    id: 4,
-    title: "User-Friendly Platform",
-    description: "Easy-to-navigate interface that helps you find what you need in seconds."
+    title: "Creative & Innovative Approach",
+    description:
+      "We bring fresh ideas that help your brand stand out in a competitive digital space."
   },
   {
-    id: 5,
-    title: "Customer Reviews & Ratings",
-    description: "Make informed decisions based on genuine feedback from real users."
-  },
-  {
-    id: 6,
-    title: "24/7 Availability",
-    description: "Access our platform anytime, anywhere, for urgent or routine service needs."
-  },
-  {
-    id: 7,
-    title: "Trusted by Thousands",
-    description: "Join a growing community of satisfied users who rely on us daily."
+    title: "Dedicated Support",
+    description:
+      "A proactive team that’s with you every step of the way to ensure success."
   }
 ];

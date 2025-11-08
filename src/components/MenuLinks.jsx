@@ -1,43 +1,112 @@
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { useLocation, Link } from "react-router-dom";
 import { menuLinks } from "../data/menuLinksData";
+import CircleIcon from "@mui/icons-material/Circle";
+import React from "react";
+import { center, flexAllStart } from "../styles/flexStyles";
+import { motion } from "framer-motion";
+import { linkVariants } from "../animate/header";
+
+const MotionBox = motion(Box);
+const MotionButton = motion(Button);
 
 const MenuLinks = ({ scrolled, useIn, closeSidebar }) => {
+  const minLaptop = useMediaQuery("(max-width:1050px)");
   const location = useLocation();
   const footer = useIn === "footer";
   const sidebar = useIn === "sidebar";
+  const home = location.pathname === "/";
+
   return (
-    <>
-      {menuLinks.map((item) => {
+    <Box
+      sx={{
+        width: "100%",
+        ...(footer || sidebar ? flexAllStart : center),
+        flexDirection: footer || sidebar ? "column" : null,
+      }}
+    >
+      {menuLinks.map((item, index) => {
+        if (item.path === "/" && home) return null;
         const isActive = location.pathname === item.path;
+
         return (
-          <Typography
-            component={Link}
-            to={item.path}
+          <MotionBox
             key={item.id}
-            variant="body2"
-            sx={{
-              mx: 3,
-              color:isActive?"red":scrolled?"#000": "white",
-              fontWeight: isActive ? 800 : 500,
-              letterSpacing: 1,
-              textAlign:'start',
-              marginBottom:sidebar  || footer ? 2 : 0,
-              "&:hover": {
-                color: scrolled && isActive ? "#2b2b81" : "hover.main",
-                borderBottom: !isActive?"3px solid #f3b229":"",
-              }
-            }}
-            onClick={() => {
-            if (useIn === "sidebar" && closeSidebar) closeSidebar();
-             window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
+            variants={linkVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: index * 0.3 }}
           >
-            {item.name}
-          </Typography>
+            <MotionButton
+              size="small"
+              component={Link}
+              to={item.path}
+              whileHover={{
+                scale: 1.15,
+                y: -3,
+                transition: { type: "spring", stiffness: 300 },
+              }}
+              whileTap={{ scale: 0.95 }}
+              sx={{
+                textTransform: minLaptop ? "capitalize" : "uppercase",
+                color: isActive ? "info.main" : scrolled ? "#000" : "white",
+                fontWeight: isActive ? 800 : 500,
+                letterSpacing: 1,
+                textAlign: "start",
+                marginBottom: sidebar || footer ? 2 : 0,
+                textDecoration: "none",
+                cursor: "pointer",
+                mx: minLaptop ? 0.7 : 1.5,
+                position: "relative",
+                background: "transparent",
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: scrolled ? "primary.main" : "white",
+                  transition: "width 0.3s ease-in-out",
+                },
+                "&:hover::after": {
+                  width: "100%",
+                },
+              }}
+              onClick={() => {
+                if (sidebar && closeSidebar) closeSidebar();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              {footer ? (
+                <Box sx={{ display: "flex" }}>
+                  <CircleIcon
+                    fontSize="small"
+                    sx={{ color: "info.main", mr: 2 }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "primary.text",
+                      "&:hover": {
+                        color:
+                          isActive || (scrolled && isActive)
+                            ? "#2b2b81"
+                            : "hover.main",
+                      },
+                    }}
+                  >
+                    {item.name}
+                  </Typography>
+                </Box>
+              ) : (
+                item.name
+              )}
+            </MotionButton>
+          </MotionBox>
         );
       })}
-    </>
+    </Box>
   );
 };
 

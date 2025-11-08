@@ -4,31 +4,15 @@ import PublicIcon from "@mui/icons-material/Public";
 
 export const visionData = [
   {
-    icon: <VisibilityIcon sx={{ fontSize: 80, color: "#ccc", }} />,
-    title: "Our Vision",
+    id: 1,
+    title: "Our vision",
     description:
-      "To become the most trusted and comprehensive local services platform, empowering communities by making quality services accessible to everyone, everywhere.",
-    color: "#00e6e6",
+      "We envision a future where automation enhances human connection—not replaces it. A business world where empathy guides decisions and innovation serves a meaningful purpose.",
   },
   {
-    icon: <PeopleAltIcon sx={{ fontSize: 80, color: "#ccc" }} />,
-    title: "Community First",
+    id: 2,
+    title: "Our Mission",
     description:
-      "Building strong connections between service providers and seekers, fostering a thriving local ecosystem where everyone benefits.",
-    color: "#ccc",
-  },
-  {
-    icon: <PublicIcon sx={{ fontSize: 80, color: "#ccc" }} />,
-    title: "Universal Access",
-    description:
-      "Breaking down barriers to ensure that quality services are available to all, regardless of location or background.",
-    color: "#00e6e6",
-  },
-  {
-    icon: <PublicIcon sx={{ fontSize: 80, color: "#ccc" }} />,
-    title: "Universal Access",
-    description:
-      "Breaking down barriers to ensure that quality services are available to all, regardless of location or background.",
-    color: "#00e6e6",
+      "Our mission is to empower startups and growing businesses to succeed through strategic marketing, design, and leveraging technology and AI while always keeping people at the heart of what we do.",
   },
 ];

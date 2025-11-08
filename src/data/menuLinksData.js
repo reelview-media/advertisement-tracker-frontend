@@ -1,5 +1,10 @@
 export const menuLinks = [
   {
+    id: 1,
+    name: "Home",
+    path: "/",
+  },
+  {
     id: 2,
     name: "About Us",
     path: "/about",

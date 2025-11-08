@@ -2,21 +2,18 @@ import { Card, CardContent, IconButton, Typography } from "@mui/material";
 import React from "react";
 import { flexStart } from "../../styles/flexStyles";
 
-const CardComponent = ({ bg, icon, label }) => {
-  console.log("bg", bg);
+const CardComponent = ({ icon, label }) => {
   return (
     <Card
-      sx={{
-        bgcolor: bg ? "#cc0000" : "primary.main",
+      sx={(theme)=>({
         width: "100%",
+        background:theme.palette.background.custom,
         p: 2,
         cursor: "pointer",
         "&:hover": {
-          bgcolor: bg ? "primary.main" : "#cc0000",
           transform: "scale(1.05)",
-          boxShadow: 3,
         },
-      }}
+      })}
     >
       <CardContent sx={{ ...flexStart }}>
         <IconButton

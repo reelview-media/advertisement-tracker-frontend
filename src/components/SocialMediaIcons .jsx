@@ -52,13 +52,13 @@ const SocialMediaIcons = ({useIn}) => {
             to={item.url}
             target="_blank"
             sx={{
-              bgcolor:'#fff',
+              bgcolor:'background.paper',
               color: item.color,
               mr:2,
               transition: "transform 0.3s ease",
               "&:hover": {
                 transform: "scale(1.2)",
-                backgroundColor: "hover.main",
+                backgroundColor: "text.text",
               },
             }}
           >

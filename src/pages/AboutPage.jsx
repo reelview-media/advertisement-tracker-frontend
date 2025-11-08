@@ -1,18 +1,15 @@
-import Container from "@mui/material/Container";
-import { Grid, Box, Typography, useMediaQuery } from "@mui/material";
+
 import React from "react";
 import AboutSection from "../components/AboutSection";
-import CustomSlider from "../components/Swiper/CustomSlider";
-import { center } from "../styles/flexStyles";
 
 const AboutPage = () => {
-  const isTablet = useMediaQuery("(max-width:850px)");
-  const smallMobile = useMediaQuery("(max-width:450px)");
+  // const isTablet = useMediaQuery("(max-width:850px)");
+  // const smallMobile = useMediaQuery("(max-width:450px)");
 
   return (
-    <Box sx={{}}>
+    <React.Fragment>
       <AboutSection />
-      <Box
+      {/* <Box
         sx={{
           width:'100%',
           ...center,
@@ -44,9 +41,8 @@ const AboutPage = () => {
           professionals easier, faster, and more transparent for everyone.
         </Typography>
         <CustomSlider useIn="aboutService" />
-      </Box>
-      
-    </Box>
+      </Box> */}
+    </React.Fragment>
   );
 };
 

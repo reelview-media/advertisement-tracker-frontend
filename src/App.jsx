@@ -12,6 +12,7 @@ import { useAuthCheck } from "./hooks/useAuthCheck";
 import { useSelector } from "react-redux";
 import DashboardLayout from "./layouts/DashboardLayout";
 import ServicePage from "./pages/ServicePage";
+import SkeletonLoader from "./components/Loader/SkeletonLoader";
 
 const App = () => {
   const loading = useAuthCheck();
@@ -70,7 +71,7 @@ const App = () => {
       element: <PageNotFound />,
     },
   ]);
-  if (loading) return <p>Checking session...</p>;
+  if (loading) return <SkeletonLoader/>
 
   return <RouterProvider router={router} />;
 };

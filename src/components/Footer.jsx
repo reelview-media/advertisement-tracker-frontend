@@ -13,11 +13,16 @@ import SocialMediaIcons from "./SocialMediaIcons ";
 import { center, flexStart } from "../styles/flexStyles";
 
 const Footer = () => {
-  const isMobile = useMediaQuery("(max-width:600px)")
+  const isMobile = useMediaQuery("(max-width:600px)");
   return (
-    <Stack sx={{ pt: 5, bgcolor: "#ccc" }}>
+    <Stack
+      sx={(theme)=>({
+        pt: 5,
+        background:theme.palette.background.custom2
+      })}
+    >
       <Container>
-        <Grid container rowSpacing={4} columnSpacing={2}>
+        <Grid container rowSpacing={4} columnSpacing={5}>
           <Grid
             size={{ xs: 12, sm: 6, md: 4 }}
             sx={{
@@ -28,7 +33,7 @@ const Footer = () => {
               flexDirection: "column",
             }}
           >
-            <Logo useIn='footer' />
+            <Logo useIn="footer" />
             <Typography
               gutterBottom
               variant="body2"
@@ -38,7 +43,7 @@ const Footer = () => {
                 mt: 2,
                 textAlign: "start",
                 lineHeight: 1.7,
-                color: "text.light",
+                color: "primary.text",
               }}
             >
               We are a one-stop platform dedicated to connecting people with all
@@ -51,7 +56,12 @@ const Footer = () => {
           <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ p: 1 }}>
             <Typography
               variant="h5"
-              sx={{ fontWeight: "700", color: "text.main", textAlign: {xs:"start",sm:"center"} }}
+              sx={{
+                fontWeight: "700",
+                color: "secondary.main",
+                textTransform: "uppercase",
+                textAlign: { xs: "start", sm: "center", md: "start" },
+              }}
             >
               Quick Links
             </Typography>
@@ -59,12 +69,12 @@ const Footer = () => {
               sx={{
                 mt: 3,
                 display: "flex",
-                justifyContent: "start",
-                alignItems: {xs:'start',sm:"center"},
+                justifyContent: "center",
+                alignItems: { xs: "start", sm: "center", md: "start" },
                 flexDirection: "column",
               }}
             >
-              <MenuLinks useIn='footer' />
+              <MenuLinks useIn="footer" />
             </Box>
           </Grid>
           <Grid size={{ xs: 12, sm: 12, md: 4 }} sx={{}}></Grid>
@@ -76,13 +86,13 @@ const Footer = () => {
           <Grid
             size={{ xs: 12, sm: 6, md: 7 }}
             sx={{
-             ...(isMobile?center:flexStart)
+              ...(isMobile ? center : flexStart),
             }}
           >
             <SocialMediaIcons />
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 5 }} sx={{ ...center }}>
-            <Typography variant="title1" sx={{ color: "text.main",}}>
+            <Typography variant="body2" sx={{ color: "text.text" }}>
               © {new Date().getFullYear()} ReelView Media All rights reserved.
             </Typography>
           </Grid>
