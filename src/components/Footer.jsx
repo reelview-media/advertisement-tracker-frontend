@@ -16,10 +16,10 @@ const Footer = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <Stack
-      sx={(theme)=>({
+      sx={{
         pt: 5,
-        background:theme.palette.background.custom2
-      })}
+        bgcolor:'secondary.dark'
+      }}
     >
       <Container>
         <Grid container rowSpacing={4} columnSpacing={5}>
@@ -36,21 +36,19 @@ const Footer = () => {
             <Logo useIn="footer" />
             <Typography
               gutterBottom
-              variant="body2"
+              variant="body1"
               sx={{
                 letterSpacing: 0.5,
                 wordSpacing: 1,
                 mt: 2,
                 textAlign: "start",
                 lineHeight: 1.7,
-                color: "primary.text",
+                color: "text.dark",
+                fontWeight:400
               }}
             >
               We are a one-stop platform dedicated to connecting people with all
               types of essential services—quickly, reliably, and locally.
-              Whether you're planning a wedding, seeking medical help, looking
-              for legal support, or just need everyday services like a general
-              store or electrician—we bring everything under one roof.
             </Typography>
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ p: 1 }}>
@@ -58,8 +56,8 @@ const Footer = () => {
               variant="h5"
               sx={{
                 fontWeight: "700",
-                color: "secondary.main",
-                textTransform: "uppercase",
+                color: "text.custom",
+                textShadow:'2px 0px 2px #000',
                 textAlign: { xs: "start", sm: "center", md: "start" },
               }}
             >
@@ -92,7 +90,7 @@ const Footer = () => {
             <SocialMediaIcons />
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 5 }} sx={{ ...center }}>
-            <Typography variant="body2" sx={{ color: "text.text" }}>
+            <Typography variant="body1" sx={{ color: "text.dark" }}>
               © {new Date().getFullYear()} ReelView Media All rights reserved.
             </Typography>
           </Grid>

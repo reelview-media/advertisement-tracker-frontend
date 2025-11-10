@@ -57,7 +57,7 @@ const Header = () => {
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: scrolled ? "black" : "none",
-          bgcolor: scrolled ? "primary.text" : "primary.main",
+          bgcolor: scrolled ? "background.other" : "primary.main",
           transition: "background-color 0.5s ease, padding 0.5s ease",
           padding: scrolled ? "0.5rem 0" : "0.3rem 0",
         }}

@@ -1,58 +1,116 @@
 import React from "react";
-import { Box, Skeleton, Stack } from "@mui/material";
+import { Box, Skeleton, Stack, Container, Grid } from "@mui/material";
+import { center } from "../../styles/flexStyles";
 
 const SkeletonLoader = () => {
   return (
-    <Box
-      sx={{
-        bgcolor: "#000",
-        color: "#fff",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Box sx={{ bgcolor: "primary.light", minHeight: "100vh" }}>
+      {/* Navbar */}
       <Stack
-        spacing={3}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
         sx={{
-          width: "80%",
-          textAlign: "center",
-          alignItems: "center",
+          px: { xs: 2, md: 5 },
+          // borderBottom: "1px solid #fff",
         }}
       >
-        {/* Title Skeleton */}
+        <Box sx={{ flexGrow: 1 }}>
+          <Skeleton
+            variant="text"
+            width={250}
+            height={90}
+            sx={{ bgcolor: "primary.text" }}
+          />
+        </Box>
+        <Stack direction="row" spacing={4} alignItems="center">
+          {Array(4)
+            .fill()
+            .map((_, i) => (
+              <Skeleton
+                key={i}
+                variant="text"
+                width={100}
+                height={30}
+                sx={{ bgcolor: "primary.text" }}
+              />
+            ))}
+        </Stack>
         <Skeleton
-          variant="text"
-          width="60%"
-          height={80}
-          sx={{
-            background: "linear-gradient(90deg, #FF6FD8 0%, #9D60FB 50%, #4C9EFF)",
-            borderRadius: "12px",
-            animationDuration: "2s",
-          }}
+          variant="rectangular"
+          width={180}
+          height={50}
+          sx={{ borderRadius: 2, bgcolor: "primary.text", ml: 5 }}
         />
-        <Skeleton
-          variant="text"
-          width="50%"
-          height={80}
-          sx={{
-            background: "linear-gradient(90deg, #FF6FD8 0%, #9D60FB 50%, #4C9EFF)",
-            borderRadius: "12px",
-            animationDuration: "2s",
-          }}
-        />
-        {/* Subtext Skeleton */}
-        <Skeleton
-          variant="text"
-          width="70%"
-          height={40}
-          sx={{
-            background: "linear-gradient(90deg, #FF6FD8 0%, #9D60FB 50%, #4C9EFF)",
-            borderRadius: "8px",
-            animationDuration: "2s",
-          }}
-        />
+      </Stack>
+
+      {/* Hero Section */}
+      <Container sx={{ mt: 10 }}>
+        <Grid container spacing={4} alignItems="center">
+          <Grid size={{ xs: 12, sm: 12, md: 12 }}>
+            <Stack sx={{ ...center }}>
+              <Skeleton
+                variant="text"
+                width="70%"
+                height={100}
+                sx={{ bgcolor: "primary.text" }}
+              />
+              <Skeleton
+                variant="text"
+                width="90%"
+                height={100}
+                sx={{ bgcolor: "primary.text" }}
+              />
+              <Skeleton
+                variant="text"
+                width="80%"
+                height={25}
+                sx={{ bgcolor: "primary.text", mt: 5 }}
+              />
+              <Skeleton
+                variant="text"
+                width="90%"
+                height={25}
+                sx={{ bgcolor: "primary.text" }}
+              />
+            </Stack>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Stack sx={{ mt: 10,px:2 }}>
+        <Grid container>
+          <Grid size={{ xs: 12, sm: 12, md: 8 }}>
+            <Stack spacing={2}>
+              <Skeleton
+                variant="text"
+                width="80%"
+                height={50}
+                sx={{ bgcolor: "primary.text" }}
+              />
+              <Skeleton
+                variant="text"
+                width="80%"
+                height={20}
+                sx={{ bgcolor: "primary.text" }}
+              />
+              <Skeleton
+                variant="text"
+                width="70%"
+                height={20}
+                sx={{ bgcolor: "primary.text" }}
+              />
+            </Stack>
+          </Grid>
+          <Grid size={{xs:12,sm:12,md:4}}>
+            <Skeleton
+            variant="rectangular"
+            width="100%"
+            height={175}
+            sx={{ borderRadius: 3, bgcolor: "primary.text" }}
+          />
+          </Grid>
+        </Grid>
       </Stack>
     </Box>
   );

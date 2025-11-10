@@ -27,7 +27,7 @@ const HeroSection = () => {
       viewport={{ once: true, amount: 0.3 }}
       sx={{
         // border:'2px solid red',
-        mt:10,
+        mt:8,
         height: "auto",
         pb: 10,
         bgcolor: "primary.main",
@@ -40,6 +40,7 @@ const HeroSection = () => {
           gutterBottom
           variant="h1"
           sx={{
+            color:'primary.text',
             fontSize: ismobile
               ? "3.5rem"
               : isTablet
@@ -49,7 +50,7 @@ const HeroSection = () => {
               : "6rem",
             textAlign: "center",
             fontWeight: 900,
-            color: "secondary.main",
+            textShadow:'2px 0px 3px #000'
           }}
         >
           Let’s Grow{" "}
@@ -58,10 +59,7 @@ const HeroSection = () => {
             variant="h1"
             component="span"
             sx={{
-              background:
-                "linear-gradient(90deg, #FF6FD8 0%, #9D60FB 50%, #4C9EFF 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              color:'primary.text',
               fontSize: ismobile
                 ? "3.5rem"
                 : isTablet
@@ -71,6 +69,7 @@ const HeroSection = () => {
                 : "6rem",
               fontWeight: 900,
               lineHeight: 1.4,
+              textShadow:'2px 0px 3px #000'
             }}
           >
             Your Business Digitally
@@ -95,11 +94,12 @@ const HeroSection = () => {
           <Typography
             component="span"
             sx={{
-              color: "secondary.main",
+              color: "other.light",
               fontSize: "1.3rem",
               fontWeight: 900,
               borderRadius: 5,
               p: 0.5,
+              textShadow:'0px 0px 1px #000'
             }}
           >
             marketing strategies
@@ -108,7 +108,7 @@ const HeroSection = () => {
           <Typography
             component="span"
             sx={{
-              color: "secondary.main",
+              color: "other.light",
               fontSize: "1.3rem",
               fontWeight: 900,
               borderRadius: 5,

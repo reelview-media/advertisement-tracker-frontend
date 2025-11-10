@@ -3,45 +3,42 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#000",
-      light: "#404040",
-      text: "#FFFFFF",
+      main: "#666633",
+      dark:'#55552b',
+      light: "#aaaa55",
+      text: "#cce6ff",
     },
     secondary: {
-      main: "#ff00bb",
-      light: "#FF6FD8",
+      main: "#339cff",
+      dark:'#004f99',
+      light: "#cce6ff",
       text: "#000000",
     },
-    info: {
-      main: "#005ccc",
-      light: "#4C9EFF",
+    other: {
+      main: "#e6ffff",
+      dark:'#00cccc',
+      light: "#00ffff",
       text: "#000",
     },
-    other: {
-      main: "#5305c7",
-      light: "#9D60FB",
-      text: "#fff",
-    },
     background: {
-      default: "#000",
-      custom: "linear-gradient(10deg, #FF6FD8 0%, #9D60FB 50%, #4C9EFF 100%)",
-      custom2: "linear-gradient(10deg, #000 50%, #404040 100%)",
-      paper: "rgba(255, 255, 255, 0.9)",
+      default: "#55552b",
+      paper: "#004f99",
+      other:'#fff',
     },
     text: {
-      main: "#000",
-      light: "#404040",
-      highlight: "#e6e600",
-      text: "#d9d9d9",
+      default: "#000",
+      dark:'#fff',
+      light: "#cce6ff",
+      custom:'#55552b'
     },
-    hover: {
-      default: "#ff00bb",
-      main: "#005ccc",
-      light: "#5305c7",
-    },
-    active: {
-      main: "#0000FF",
-    },
+    // hover: {
+    //   default: "#ff00bb",
+    //   main: "#005ccc",
+    //   light: "#5305c7",
+    // },
+    // active: {
+    //   main: "#0000FF",
+    // },
   },
   typography: {
     fontFamily: "'Inter', sans-serif",
@@ -61,39 +58,32 @@ const theme = createTheme({
           "& .MuiOutlinedInput-root": {
             borderRadius: "5px",
             "& fieldset": {
-              borderColor: "#5305c7", // ✅ default border pink
+              borderColor: "#55552b", // ✅ default border pink
             },
             "&:hover fieldset": {
-              borderColor: "#ff00bb", // ✅ hover pink
+              borderColor: "#aaaa55", // ✅ hover pink
             },
             "&.Mui-focused fieldset": {
-              borderColor: "#005ccc", // ✅ focused pink
+              borderColor: "#666633", // ✅ focused pink
             },
             "& input::placeholder": {
-              color: "#005ccc",
+              color: "#aaaa55",
               fontSize: "0.9rem",
             },
           },
 
           // ✅ Label styling (default + focused)
           "& .MuiInputLabel-root": {
-            color: "#5305c7", // default label white
+            color: "#55552b", // default label white
             fontWeight: 500,
           },
           "& .MuiInputLabel-root.Mui-focused": {
-            color: "#005ccc", // label stays white when focused
+            color: "#55552b", // label stays white when focused
           },
         },
       },
     },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          // borderRadius: '12px',
-          backgroundColor: "#FFFBF5", // first color
-        },
-      },
-    },
+    
   },
 });
 

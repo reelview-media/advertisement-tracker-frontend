@@ -22,7 +22,6 @@ const AppLayout = () => {
             overflow: "hidden",
             bgcolor: "background.default",
             position:'relative',
-            mt:7
           }}
         >
           <Header />

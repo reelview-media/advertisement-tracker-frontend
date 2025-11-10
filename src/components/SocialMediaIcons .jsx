@@ -58,7 +58,7 @@ const SocialMediaIcons = ({useIn}) => {
               transition: "transform 0.3s ease",
               "&:hover": {
                 transform: "scale(1.2)",
-                backgroundColor: "text.text",
+                backgroundColor: "primary.light",
               },
             }}
           >

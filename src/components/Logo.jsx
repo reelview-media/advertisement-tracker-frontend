@@ -27,8 +27,8 @@ const Logo = ({ scrolled }) => {
         src={LogoImg}
         alt="Reelview Media"
         sx={{
-          width: minLaptop ? 200 : scrolled ? 200 : 250,
-          height: "auto",
+          width: minLaptop ? 200 : scrolled ? 200 : 300,
+          height: 80,
           objectFit: "contain",
           objectPosition: "center",
           p: 1,

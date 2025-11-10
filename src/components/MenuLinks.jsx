@@ -82,16 +82,24 @@ const MenuLinks = ({ scrolled, useIn, closeSidebar }) => {
                 <Box sx={{ display: "flex" }}>
                   <CircleIcon
                     fontSize="small"
-                    sx={{ color: "info.main", mr: 2 }}
+                    sx={{
+                      color: "primary.dark",
+                      borderRadius: 5,
+                      bgcolor: "#fff",
+                      boxShadow: "1px 0px 2px #000",
+                      mr: 2,
+                    }}
                   />
                   <Typography
                     variant="body2"
                     sx={{
-                      color: "primary.text",
+                      color:isActive?"primary.dark": "text.dark",
+                      fontWeight:isActive?700:'normal',
+                      textShadow:'1px 1px 1px #000',
                       "&:hover": {
                         color:
                           isActive || (scrolled && isActive)
-                            ? "#2b2b81"
+                            ? "other.main"
                             : "hover.main",
                       },
                     }}

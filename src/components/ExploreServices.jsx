@@ -14,14 +14,14 @@ const ExploreServices = () => {
     <MotionStack
       component="section"
       {...commanAnimate.section}
-      sx={{ width: "100%", py: 5, position: "relative", mt: 0,bgcolor:'primary.text' }}
+      sx={{ width: "100%", py: 5, position: "relative", mt: 0,bgcolor:'background.other' }}
     >
       <MotionTypography
         variant={smallMobile ? "h5" : "h4"}
         gutterBottom
         {...commanAnimate.heading}
         sx={{
-          color: "secondary.main",
+          color: "primary.main",
           textAlign: "center",
           fontWeight: 900,
           p: smallMobile ? 1 : 0,
@@ -33,7 +33,7 @@ const ExploreServices = () => {
         variant="body1"
         {...commanAnimate.text}
         gutterBottom
-        sx={{ textAlign: "center", color: "text.light", px: minLaptop ? 1 : 0 }}
+        sx={{ textAlign: "center", color: "primary.dark", px: minLaptop ? 1 : 0 }}
       >
         We provide a wide rang of reliable and verified services for personal,
         professional and community needs.
