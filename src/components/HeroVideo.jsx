@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import heroVideo from "../assets/heroVideo.mp4";
+import heroVideo from "../assets/reelview.mp4";
 import { center, startCenter } from "../styles/flexStyles";
 import { motion } from "framer-motion";
 import { heroSectionAnimation } from "../animate/heroSectionAnimate";
@@ -123,7 +123,7 @@ const HeroVideo = () => {
                 borderRadius: 5,
                 transform: `scale(${videoScale})`,
                 transition: "all 0.5s ease",
-                boxShadow: "0px  0px 20px rgba(255, 255, 255, 0.3)",
+                // boxShadow: "0px  0px 20px rgba(255, 255, 255, 0.3)",
                 overflow: "hidden",
               }}
             >

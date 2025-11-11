@@ -1,17 +1,34 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import CustomSlider from "./Swiper/CustomSlider";
 import { center } from "../styles/flexStyles";
 
 const OurTeam = () => {
   return (
-    <Stack component="section" sx={{ py: 10,...center,border:'2px solid red'}}>
-      <Typography gutterBottom variant="h3" sx={{ color: "secondary.main",fontWeight:800 }}>
-        Meet Your Teams
+    <Stack
+      component="section"
+      sx={{mt:5, pb: 5, ...center,}}
+    >
+      <Typography
+        gutterBottom
+        variant="h4"
+        sx={{
+          color: "secondary.dark",
+          fontWeight: 900,
+          textTransform: "capitalize",
+        }}
+      >
+        Our team of experts
       </Typography>
-      <Container>
-        {/* <CustomSlider useIn='teamSection' /> */}
-      </Container>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", textTransform: "capitalize" }}
+      >
+        Our professionals May help you out to enhance your socail meida reach
+      </Typography>
+      <Box disableGutters>
+        <CustomSlider useIn="team" />
+      </Box>
     </Stack>
   );
 };

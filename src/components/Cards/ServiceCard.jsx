@@ -28,17 +28,17 @@ const ServiceCard = ({ item }) => {
       viewport={serviceCardAnimation.viewport}
       whileHover={serviceCardAnimation.whileHover}
       transition={serviceCardAnimation.transition}
-      sx={(theme) => ({
+      sx={{
         width: "100%",
         height: "100%",
         p: aboutPage ? 0 : 3,
         ...(aboutPage ? {} : center),
         flexDirection: smallMobile || aboutPage ? "column" : "row",
         filter: "brightness(100%)",
-        background: theme.palette.background.custom,
+        bgcolor:'background.main',
         cursor: "pointer",
         overflow: "hidden",
-      })}
+      }}
     >
       {/* ✅ If About Page → show image */}
       {aboutPage ? (

@@ -17,6 +17,6 @@ export const whyChooseUs = [
   {
     title: "Dedicated Support",
     description:
-      "A proactive team that’s with you every step of the way to ensure success."
+      "A proactive team that help you at every step of the way to ensure success."
   }
 ];

@@ -14,10 +14,10 @@ const ExploreServices = () => {
     <MotionStack
       component="section"
       {...commanAnimate.section}
-      sx={{ width: "100%", py: 5, position: "relative", mt: 0,bgcolor:'background.other' }}
+      sx={{ width: "100%", mt: 10, position: "relative",bgcolor:'background.other' }}
     >
       <MotionTypography
-        variant={smallMobile ? "h5" : "h4"}
+        variant={smallMobile ? "h5" : "h3"}
         gutterBottom
         {...commanAnimate.heading}
         sx={{
@@ -25,6 +25,7 @@ const ExploreServices = () => {
           textAlign: "center",
           fontWeight: 900,
           p: smallMobile ? 1 : 0,
+          textShadow:'3px 0px 1px #000'
         }}
       >
         Explore Our Services
@@ -33,7 +34,7 @@ const ExploreServices = () => {
         variant="body1"
         {...commanAnimate.text}
         gutterBottom
-        sx={{ textAlign: "center", color: "primary.dark", px: minLaptop ? 1 : 0 }}
+        sx={{ textAlign: "center", color: "primary.dark", px: minLaptop ? 1 : 0,fontWeight:600 }}
       >
         We provide a wide rang of reliable and verified services for personal,
         professional and community needs.

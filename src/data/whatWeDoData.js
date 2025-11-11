@@ -2,7 +2,7 @@ export const whatWeDoData = [
   {
     id: 1,
     title: "Marketing Consulting",
-    subTitle: "Build your strong brand. Drive smarter strategy.",
+    subTitle: "Enhance your brand. Drive smart strategy.",
     description:
       "We help businesses create powerful brands and marketing strategies that stand out.",
     servicesTitle: "Services",

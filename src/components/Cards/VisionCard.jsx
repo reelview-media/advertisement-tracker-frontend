@@ -19,30 +19,31 @@ const VisionCard = ({ item }) => {
     <>
       <AdsClickIcon
         sx={{
-          color: "#cc0096",
+          color: "background.main",
           fontSize: "4rem",
           position: "absolute",
           top: -30,
           left: -30,
           transform: "rotate(-10deg)",
+          filter: "brightness(100%)"
         }}
       />
       <MotionCard
         {...commanAnimate.card}
-        sx={(theme) => ({
+        sx={{
           width: "100%",
           cursor: "pointer",
           p: 3,
-          background: theme.palette.background.custom,
-        })}
+          bgcolor: 'background.main'
+        }}
       >
         <CardContent sx={{ ...center, flexDirection: "column" }}>
           <Typography
             variant="h3"
             sx={{
               fontWeight: 800,
-              color: "#fff",
-              textShadow: "3px 0px 3px #000",
+              color: 'primary.dark',
+              textShadow: "1px 0px 1px #000",
               textAlign: "center",
             }}
           >
@@ -50,7 +51,7 @@ const VisionCard = ({ item }) => {
           </Typography>
           <Divider
             sx={{
-              borderColor: "#fff",
+              borderColor: "primary.dark",
               borderWidth: "2px",
               width: "80%",
               mb: 3,
@@ -60,7 +61,7 @@ const VisionCard = ({ item }) => {
           <Typography
             variant="body1"
             sx={{
-              color: "#fff",
+              color: "text.dark",
               lineHeight: 1.5,
               fontWeight: 500,
               letterSpacing: 0.5,

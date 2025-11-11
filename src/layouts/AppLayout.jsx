@@ -20,7 +20,7 @@ const AppLayout = () => {
             flexDirection: "column",
             minHeight: "100vh",
             overflow: "hidden",
-            bgcolor: "background.default",
+            // bgcolor: "background.default",
             position:'relative',
           }}
         >
